@@ -7,15 +7,20 @@ export async function addProduct(formData: FormData) {
   const product = formData.get("product")?.toString();
   const price = formData.get("price")?.toString();
 
-  if (!product || !price) return;
+  // if (!product || !price) return;
 
   const newPRoduct: Product = {
-    product,
-    price,
+    id: new Date().toISOString(),
+    product: product as string,
+    price: price as string,
   };
 
-  console.log(newPRoduct);
+  return newPRoduct;
+  // await postData(newPRoduct);
+  // revalidatePath("/");
+}
 
-  await postData(newPRoduct);
+export async function send(product: Product) {
+  await postData(product);
   revalidatePath("/");
 }
