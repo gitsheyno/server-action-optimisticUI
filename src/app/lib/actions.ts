@@ -15,12 +15,6 @@ export async function addProduct(formData: FormData) {
     price: price as string,
   };
 
-  return newPRoduct;
-  // await postData(newPRoduct);
-  // revalidatePath("/");
-}
-
-export async function send(product: Product) {
-  await postData(product);
+  await postData(newPRoduct);
   revalidatePath("/");
 }
